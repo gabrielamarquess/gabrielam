@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Clube de Regatas do Flamengo</title>
+ <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.mi
+n.css">
+ 
+ <style>
+ /* --- VARIÁVEIS E RESET --- */
+ :root {
+ --red-fla: #C3281E;
+ --black-fla: #000000;
+ --gray-bg: #F3F3F3;
+ --text-dark: #333333;
+ --text-gray: #666666;
+ --white: #FFFFFF;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; font-family:
+'Arial Narrow', Arial, sans-serif; }
+ body { background-color: var(--white); color: var(--text-dark);
+overflow-x: hidden; }
+ a { text-decoration: none; color: inherit; transition: 0.3s; }
+ ul { list-style: none; }
+ .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+ /* --- 1. CABEÇALHO --- */
+ .top-bar {
+ background-color: var(--red-fla);
+ height: 65px;
+ display: flex;
+ align-items: center;
+ color: var(--white);
+ position: relative;
+ z-index: 50;
+ }
+
+
+.top-bar .container {
+ display: flex;
+ justify-content: flex-end;
+ align-items: center;
+ width: 100%;
+ gap: 20px;
+ }
+ /* LOGO LIMPA */
+ .logo-crf-container {
+ position: absolute;
+ top: 0;
+ left: 5%;
+ z-index: 60;
+ }
+ .logo-crf-bg {
+ background: transparent;
+ border: none;
+ display: block;
+ margin-top: 5px;
+ }
+ .logo-crf-bg img {
+ width: 55px;
+ height: auto;
+ filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
+ }
+ .header-buttons { display: flex; gap: 10px; margin-right: auto;
+margin-left: 100px; }
+ .btn-header {
+ background-color: rgba(0,0,0,0.2);
+ padding: 8px 15px;
+ font-weight: bold;
+ font-size: 0.85rem;
+ text-transform: uppercase;
+ border-radius: 3px;
+ }
+ .btn-header:hover { background-color: rgba(0,0,0,0.4); }
+
+
+.partners { display: flex; gap: 15px; align-items: center; }
+ .partners span { color: black; font-weight: 900; font-style:
+italic; font-size: 1.2rem; }
+ .partners i { color: black; font-size: 1.5rem; transform:
+rotate(-45deg); }
+ .social-icons { display: flex; gap: 12px; align-items: center;
+margin-left: 15px; }
+ .social-icons i { font-size: 0.9rem; color: black; cursor:
+pointer; }
+ .nav-bar {
+ background-color: var(--black-fla);
+ height: 40px;
+ display: flex;
+ align-items: center;
+ z-index: 40;
+ }
+ .nav-menu { display: flex; gap: 25px; padding-left: 100px; }
+ .nav-menu li a {
+ color: var(--white); font-size: 0.8rem; font-weight: bold;
+text-transform: uppercase;
+ display: flex; align-items: center; gap: 5px;
+ }
+ .nav-menu li a:hover { color: #ddd; }
+ .nav-menu i { font-size: 0.6rem; margin-top: 2px; }
+ /* --- 2. HERO COM ZOOM --- */
+ .hero-section { display: flex; width: 100%; height: 450px; }
+ .hero-item {
+ width: 50%; position: relative; display: flex; align-items:
+flex-end; cursor: pointer; overflow: hidden;
+ }
+ .bg-img {
+ position: absolute; top: 0; left: 0; width: 100%; height:
+100%; object-fit: cover;
+ transition: transform 0.5s ease; z-index: 0;
+ }
+
+
+.hero-item:hover .bg-img,
+ .news-card:hover .bg-img,
+ .tv-main:hover .bg-img,
+ .tv-thumb:hover .bg-img,
+ .photo-img-container:hover .bg-img {
+ transform: scale(1.08);
+ }
+ .hero-overlay {
+ background: linear-gradient(to top, rgba(0,0,0,0.9),
+transparent);
+ width: 100%; padding: 40px 30px; color: var(--white);
+position: relative; z-index: 1;
+ }
+ .tag-red { background-color: var(--red-fla); color: white;
+padding: 2px 6px; font-size: 0.65rem; font-weight: bold; text-transform:
+uppercase; margin-bottom: 8px; display: inline-block; }
+ .hero-title { font-size: 1.6rem; font-weight: 800; text-transform:
+uppercase; line-height: 1.1; margin-bottom: 5px; }
+ /* --- 3. BARRA INFO --- */
+ .info-strip { background-color: var(--gray-bg); padding: 40px 0;
+border-bottom: 1px solid #ddd; }
+ .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap:
+50px; }
+ .section-title {
+ border-left: 4px solid var(--red-fla); padding-left: 10px;
+ font-size: 1.1rem; font-weight: bold; text-transform:
+uppercase; color: #000; margin-bottom: 15px;
+ }
+ .game-card { text-align: center; }
+ .game-tags { display: flex; gap: 5px; justify-content: center;
+margin-bottom: 15px; flex-wrap: wrap;}
+ .tag-gray { background-color: #ddd; color: #777; padding: 3px 8px;
+font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+ .tag-nav-red { background-color: var(--red-fla); color: white;
+padding: 3px 8px; font-size: 0.7rem; font-weight: bold; text-transform:
+uppercase; }
+
+.game-matchup h2 { font-size: 1.6rem; font-weight: 800;
+text-transform: uppercase; margin-bottom: 5px; color: #111; }
+ .game-sub { font-size: 0.8rem; color: #555; text-transform:
+uppercase; margin-bottom: 20px; font-weight: bold; }
+ .logos-area { display: flex; align-items: center; justify-content:
+center; gap: 15px; margin-bottom: 15px; }
+ .team-logo { width: 70px; height: 70px; object-fit: contain; }
+ .game-info-text { color: var(--red-fla); font-size: 0.85rem;
+font-weight: bold; text-transform: uppercase; line-height: 1.4; }
+ /* --- TABELA ATUALIZADA (IGUAL AO PRINT) --- */
+ .standings-header-tag {
+ background-color: var(--red-fla); color: white; display:
+inline-block;
+ padding: 4px 8px; font-size: 0.75rem; font-weight: bold;
+text-transform: uppercase; margin-bottom: 15px;
+ }
+ 
+ .table-custom { width: 100%; border-collapse: separate;
+border-spacing: 0 8px; font-size: 0.9rem; color: #333; }
+ 
+ /* Cabeçalho da tabela */
+ .table-custom th {
+ text-align: center;
+ color: #999;
+ font-size: 0.75rem;
+ font-weight: normal;
+ padding-bottom: 5px;
+ }
+ 
+ /* Linhas da tabela */
+ .table-custom td { vertical-align: middle; padding: 5px 0; }
+ 
+ .col-pos { width: 30px; font-weight: bold; color: #111; font-size:
+1rem; text-align: center; }
+ .col-shield { width: 40px; text-align: center; }
+ .col-team { width: 60px; font-weight: 900; text-align: left;
+font-size: 1rem; color: #111; }
+
+
+.col-pts { font-weight: 900; text-align: center; color: #000;
+font-size: 1rem; } /* P (Preto) */
+ .col-stat { text-align: center; color: #777; font-size: 0.95rem; }
+/* J e V (Cinza) */
+ .mini-shield { width: 25px; height: 25px; object-fit: contain;
+display: block; margin: 0 auto; }
+ .link-table { display: block; text-align: right; margin-top: 10px;
+color: var(--red-fla); font-size: 0.75rem; font-weight: bold;
+text-transform: uppercase; }
+ /* --- 4. NOTÍCIAS --- */
+ .news-section { padding: 40px 0; }
+ .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap:
+30px; margin-bottom: 40px; }
+ .news-header { display: flex; justify-content: space-between;
+align-items: flex-end; border-bottom: 1px solid #ddd; padding-bottom: 5px;
+margin-bottom: 15px; }
+ .news-header h2 { font-size: 1.4rem; text-transform: uppercase;
+font-weight: 800; }
+ .news-header a { font-size: 0.7rem; color: var(--red-fla);
+font-weight: bold; text-transform: uppercase; }
+ 
+ .news-card { height: 280px; position: relative; border-radius:
+2px; overflow: hidden; cursor: pointer; }
+ .card-content { position: absolute; bottom: 0; width: 100%;
+padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9),
+transparent); color: white; z-index: 1; }
+ .card-title { font-size: 1.1rem; font-weight: 800; text-transform:
+uppercase; margin: 5px 0; line-height: 1.2; }
+ /* --- 5. FLAMENGO TV --- */
+ .tv-section { padding-bottom: 40px; }
+ .tv-grid { display: grid; grid-template-columns: 2fr 1fr; gap:
+20px; }
+ .tv-main { position: relative; height: 0; padding-bottom: 56.25%;
+background: #000; overflow: hidden; margin-bottom: 10px; cursor: pointer;
+}
+
+
+.tv-main-info h3 { font-size: 1.3rem; font-weight: 800;
+text-transform: uppercase; margin-bottom: 5px; }
+ .tv-main-info p { font-size: 0.9rem; color: #555; }
+ .tv-item { display: flex; gap: 15px; margin-bottom: 20px; cursor:
+pointer; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+ .tv-thumb { width: 140px; height: 80px; position: relative;
+overflow: hidden; flex-shrink: 0; background: #000; }
+ .tv-info h4 { font-size: 0.9rem; font-weight: 800; text-transform:
+uppercase; line-height: 1.2; margin-bottom: 5px; }
+ .tv-info p { font-size: 0.75rem; color: #777; }
+ /* --- 6. [NOVO] FOTOS --- */
+ .photos-section { padding: 40px 0 60px 0; }
+ .photos-grid { display: grid; grid-template-columns: repeat(3,
+1fr); gap: 25px; margin-bottom: 50px; }
+ .photo-card { cursor: pointer; }
+ .photo-img-container { width: 100%; height: 220px; overflow:
+hidden; margin-bottom: 12px; position: relative; }
+ .photo-img-container img { width: 100%; height: 100%; object-fit:
+cover; transition: transform 0.5s ease; }
+ 
+ .photo-date { display: block; color: var(--red-fla); font-size:
+0.75rem; font-weight: bold; margin-bottom: 6px; text-transform: uppercase;
+}
+ .photo-title {
+ font-size: 1.0rem;
+ font-weight: 800;
+ text-transform: uppercase;
+ line-height: 1.2;
+ color: #000;
+ margin-bottom: 5px;
+ }
+ .photo-credit { font-size: 0.75rem; color: #888; display: block; }
+ /* Patrocinadores (Estilo Box) */
+ .photo-sponsors { margin-top: 20px; }
+ .sponsor-grid-row { display: grid; grid-template-columns:
+repeat(4, 1fr); gap: 20px; margin-bottom: 20px; }
+ .sponsor-box {
+ border: 1px solid #ddd;
+
+
+height: 110px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: white;
+ transition: 0.3s;
+ }
+ .sponsor-box:hover { border-color: var(--red-fla); }
+ .sponsor-box img { max-width: 70%; max-height: 70%; object-fit:
+contain; }
+ /* --- 7. FOOTER --- */
+ .sponsors-bar { background-color: #fff; padding: 20px 0;
+border-top: 1px solid #ddd; text-align: center; }
+ .sponsors-img { height: 40px; margin: 0 15px; filter:
+grayscale(100%); opacity: 0.7; transition: 0.3s; }
+ .sponsors-img:hover { filter: grayscale(0%); opacity: 1; }
+ .main-footer { background-color: #000; color: #fff; padding: 50px
+0 20px 0; font-size: 0.9rem; }
+ .footer-grid { display: grid; grid-template-columns: repeat(4,
+1fr); gap: 30px; margin-bottom: 40px; }
+ .footer-col h4 { color: var(--red-fla); text-transform: uppercase;
+font-weight: 800; margin-bottom: 15px; }
+ .footer-col ul li { margin-bottom: 8px; }
+ .footer-col ul li a:hover { color: var(--red-fla); }
+ .footer-social i { font-size: 1.2rem; margin-right: 15px; cursor:
+pointer; }
+ .copyright { text-align: center; border-top: 1px solid #333;
+padding-top: 20px; font-size: 0.8rem; color: #777; }
+ /* PRIVACIDADE */
+ .privacy { position: fixed; bottom: 20px; left: 20px; background:
+#000; color: white; width: 300px; padding: 15px; border-radius: 8px;
+font-size: 0.8rem; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+ .privacy a { text-decoration: underline; }
+ .privacy-btns { display: flex; margin-top: 10px; border-top: 1px
+solid #333; }
+ .p-btn { flex: 1; padding: 10px; text-align: center; cursor:
+pointer; font-weight: bold; }
+ .p-acc { background: var(--red-fla); }
+
+</style>
+</head>
+<body>
+ <header>
+ <div class="top-bar">
+ <div class="logo-crf-container">
+ <div class="logo-crf-bg">
+ <img
+src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_log
+o.svg" alt="CRF">
+ </div>
+ </div>
+ <div class="container">
+ <div class="header-buttons">
+ <a href="#" class="btn-header">Seja Sócio-Torcedor</a>
+ <a href="#" class="btn-header">Acesse o
+Fla-Prêmios</a>
+ </div>
+ <div class="partners"><span>Betano</span><i class="fas
+fa-signal"></i></div>
+ <div class="social-icons">
+ <i class="fas fa-video"></i><i class="fab
+fa-facebook-f"></i><i class="fab fa-x-twitter"></i>
+ <i class="fab fa-instagram"></i><i class="fab
+fa-youtube"></i><i class="fab fa-tiktok"></i><i class="fas fa-search"></i>
+ </div>
+ </div>
+ </div>
+ <nav class="nav-bar">
+ <div class="container">
+ <ul class="nav-menu">
+ <li><a href="#">Futebol <i class="fas
+fa-caret-down"></i></a></li>
+ <li><a href="#">Ingressos</a></li>
+ <li><a href="#">Sócio-Torcedor</a></li>
+ <li><a href="#">Basquete <i class="fas
+fa-caret-down"></i></a></li>
+
+
+<li><a href="#">Olímpicos <i class="fas
+fa-caret-down"></i></a></li>
+ <li><a href="#">Fla Prêmios</a></li>
+ <li><a href="#">Loja <i class="fas
+fa-caret-down"></i></a></li>
+ <li><a href="#">Clube <i class="fas
+fa-caret-down"></i></a></li>
+ </ul>
+ </div>
+ </nav>
+ </header>
+ <section class="hero-section">
+ <div class="hero-item">
+ <img src="fla1.webp" class="bg-img">
+ <div class="hero-overlay">
+ <span class="tag-red">Futebol</span>
+ <h1 class="hero-title">APÓS O TETRA DA AMÉRICA, FLAMENGO
+SE REAPRESENTA COM FOCO NA RETA FINAL DO BRASILEIRÃO</h1>
+ <p style="font-size: 0.8rem; opacity: 0.8;">Mengão
+enfrenta o Ceará nesta quarta feira [3] no maracanã e pode ser campeão com
+uma rodada de antecedência</p>
+ </div>
+ </div>
+ <div class="hero-item">
+ <img src="fla2.webp" class="bg-img">
+ <div class="hero-overlay">
+ <span class="tag-red">Futebol</span>
+ <h1 class="hero-title">NOS BRAÇOS DA NAÇÃO! FLAMENGO
+COMEMORA O TETRA DA LIBERTADORES NAS RUAS DO RIO DE JANEIRO</h1>
+ <p style="font-size: 0.8rem; opacity: 0.8;">Acompanhado
+por milhares de torcedores, elenco rubro-negro desfina em trio elétrico no
+Centro da cidade</p>
+ </div>
+ </div>
+ </section>
+ <section class="info-strip">
+ <div class="container info-grid">
+ <div class="game-card">
+
+
+<div class="section-title">Próximo Jogo</div>
+ <div class="game-tags">
+ <span class="tag-nav-red">NBB 2025/26</span>
+ <span class="tag-gray">Campeonato Brasileiro
+2025</span>
+ </div>
+ <div class="game-matchup">
+ <h2>Pinheiros X Flamengo</h2>
+ <div class="game-sub">NBB 2025/26</div>
+ <div class="logos-area">
+ <img src="Esporte_Clube_Pinheiros.svg"
+class="team-logo" alt="ECP">
+ <img
+src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_log
+o.svg" class="team-logo" alt="CRF">
+ </div>
+ <div class="game-info-text">GINÁSIO HENRIQUE
+VILLABOIM<br>03/12 - 20:00</div>
+ </div>
+ </div>
+ 
+ <div class="standings-card">
+ <div class="section-title">Classificação</div>
+ <div class="standings-header-tag">CAMPEONATO BRASILEIRO
+2025</div>
+ 
+ <table class="table-custom">
+ <thead>
+ <tr>
+ <th style="width:30px;"></th> <th
+style="width:40px;"></th> <th style="width:60px;"></th> <th>P</th>
+ <th>J</th>
+ <th>V</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td class="col-pos">1</td>
+
+
+<td class="col-shield"><img
+src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_log
+o.svg" class="mini-shield"></td>
+ <td class="col-team">FLA</td>
+ <td class="col-pts">75</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">22</td>
+ </tr>
+<tr>
+ <td class="col-pos">2</td>
+ <td class="col-shield"><img
+src="https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.sv
+g" class="mini-shield"></td>
+ <td class="col-team">PAL</td>
+ <td class="col-pts">70</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">21</td>
+ </tr>
+<tr>
+ <td class="col-pos">3</td>
+ <td class="col-shield"><img
+src="Cruzeiro_Esporte_Clube_(logo).svg.webp" class="mini-shield"></td>
+ <td class="col-team">CRU</td>
+ <td class="col-pts">69</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">19</td>
+ </tr>
+<tr>
+ <td class="col-pos">4</td>
+ <td class="col-shield"><img
+src="Mirassol_FC_logo.png" class="mini-shield"></td>
+ <td class="col-team">MIR</td>
+ <td class="col-pts">63</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">17</td>
+ </tr>
+<tr>
+ <td class="col-pos">5</td>
+
+
+<td class="col-shield"><img
+src="https://upload.wikimedia.org/wikipedia/commons/5/52/Botafogo_de_Futeb
+ol_e_Regatas_logo.svg" class="mini-shield"></td>
+ <td class="col-team">BOT</td>
+ <td class="col-pts">59</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">16</td>
+ </tr>
+<tr>
+ <td class="col-pos">6</td>
+ <td class="col-shield"><img
+src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_esc
+udo.png" class="mini-shield"></td>
+ <td class="col-team">FLU</td>
+ <td class="col-pts">58</td>
+ <td class="col-stat">36</td>
+ <td class="col-stat">17</td>
+ </tr>
+ </tbody>
+ </table>
+ <a href="#" class="link-table">VEJA A TABELA COMPLETA</a>
+ </div>
+ </div>
+ </section>
+ <section class="news-section container">
+ <div class="news-grid">
+ <div>
+ <div class="news-header"><h2>REMO E CANOAGEM</h2><a
+href="#">Veja Todas</a></div>
+ <div class="news-card">
+ <img src="campeao1.webp" class="bg-img">
+ <div class="card-content">
+ <span class="tag-red">Remo</span>
+ <h3 class="card-title">É CAMPEÃO! FLAMENGO VENCE
+SEXTA REGATA E CONQUISTA O ESTADUAL DE REMO DE FORMA INVICTA</h3>
+ <p style="font-size: 0.8rem; opacity:
+0.8;">conquista marca o 56 titulo carioca do esporte fundador rubro-negro;
+o décimo sem perder nenhuma regata </p>
+ </div>
+
+
+</div>
+ </div>
+ <div>
+ <div class="news-header"><h2>Futebol</h2><a href="#">Veja
+Todas</a></div>
+ <div class="news-card">
+ <img src="CAMPEAO2.webp" class="bg-img">
+ <div class="card-content">
+ <span class="tag-red">Futebol</span>
+ <h3 class="card-title">PELO FLAMENGO, VARELA
+REGISTRA MAIORES VELOCIDADES DA FINAL</h3>
+ <p style="font-size: 0.8rem; opacity:
+0.8;">lateral atingiu a maior velocidade da decisão aos 92' e esteve entre
+os atletas mais participativos em pressão,
+ recuperação e construção ofensiva</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="news-grid">
+ <div>
+ <div class="news-header"><h2>Basquete</h2><a href="#">Veja
+Todas</a></div>
+ <div class="news-card">
+ <img src="campeao3.webp" class="bg-img">
+ <div class="card-content">
+ <span class="tag-red">Basquete</span>
+ <h3 class="card-title">FLAMENGO VENCE RIO CLARO NA
+ABERTURA DA RODADA DUPLA E SEGUE LIDER DO NBB</h3>
+ <p style="font-size: 0.8rem; opacity: 0.8;">na
+prévia da partida entre Flamengo e RB Bragântino no Maracanâ, mengão faz a
+alegria da torcida e confirma
+ favoritismo contra equipe paulista</p>
+ </div>
+ </div>
+ </div>
+ <div>
+ <div class="news-header"><h2>Futebol Feminino</h2><a
+href="#">Veja Todas</a></div>
+ <div class="news-card">
+
+<img src="feminina.webp" class="bg-img">
+ <div class="card-content">
+ <span class="tag-red">Futebol Feminino</span>
+ <h3 class="card-title">FLAMENGO VAI DISPUTAR A
+WORLD SEVENS FOOTBALL NOS ESTADOS UNIDOS</h3>
+ <p style="font-size: 0.8rem; opacity:
+0.8;">torneio de Fut7 será na próxima semana e rubro-negro está no grupo
+A, com Kansas City, Trigres-MEX e Toronto-CAN</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ <section class="tv-section container">
+ <div class="news-header"><h2>Flamengo TV</h2><a href="#">Veja
+todos os vídeos</a></div>
+ <div class="tv-grid">
+ <div>
+ <div class="tv-main">
+ <img src="ftv.webp" class="bg-img">
+ </div>
+ <div class="tv-main-info">
+ <h3>BASTIDORES - FLA 3X0 RB BRAGANTINO</h3>
+ <p>Mengão vence o RB Bragantino e se aproxima do nono
+título brasileiro. Veja os lances na FlamengoTV.</p>
+ </div>
+ </div>
+ <div>
+ <div class="tv-item">
+ <div class="tv-thumb"><img src="tv.webp"
+class="bg-img"></div>
+ <div class="tv-info"><h4>BASTIDORES - SPORT 1X5
+FLA</h4><p>Mengão goleia o Sport e reassume a liderança do
+brasileirão.Veja os lances na FlamengoTV.</p></div>
+ </div>
+ <div class="tv-item">
+ <div class="tv-thumb"><img src="tv2.webp"
+class="bg-img"></div>
+
+<div class="tv-info"><h4>BASTIDORES - FLA 3X2
+SANTOS</h4><p>Com emoção no fim, Mengão vence o santos e segue na briga
+pelo título brasileiro. Veja os lances na FlamengoTV</p></div>
+ </div>
+ <div class="tv-item">
+ <div class="tv-thumb"><img src="tv3.webp"
+class="bg-img"></div>
+ <div class="tv-info"><h4>BASTIDORES - FLA 3X0
+SPORT</h4><p>Com dois gols de Bruno Henrique e golaço de falta de
+arrascaeta, Mengão vence o Sport no Maraca. Veja os lances na
+FlamengoTV</p></div>
+ </div>
+ </div>
+ </div>
+ </section>
+ <section class="photos-section container">
+ <div class="news-header">
+ <h2>FOTOS</h2>
+ <a href="#">VEJA TODAS AS FOTOS</a>
+ </div>
+ <div class="photos-grid">
+ <div class="photo-card">
+ <div class="photo-img-container">
+ <img src="flamengo111.webp" class="bg-img" alt="Foto
+Jogo">
+ </div>
+ <div class="photo-info">
+ <span class="photo-date">19/11/2025</span>
+ <h3 class="photo-title">FLUMINENSE X FLAMENGO -
+CAMPEONATO BRASILEIRO - MARACANA - 19-11-2025</h3>
+ <span class="photo-credit">Gilvan de
+Souza/Flamengo</span>
+ </div>
+ </div>
+ <div class="photo-card">
+ <div class="photo-img-container">
+ <img src="flamengo222.webp" class="bg-img" alt="Foto
+Evento">
+
+
+</div>
+ <div class="photo-info">
+ <span class="photo-date">17/11/2025</span>
+ <h3 class="photo-title">EVENTO SOLENE 130 ANOS DO
+FLAMENGO - 17-11-2025</h3>
+ <span class="photo-credit">Gilvan de
+Souza/Flamengo</span>
+ </div>
+ </div>
+ <div class="photo-card">
+ <div class="photo-img-container">
+ <img src="flamengo333.webp" class="bg-img" alt="Foto
+Torcida">
+ </div>
+ <div class="photo-info">
+ <span class="photo-date">15/11/2025</span>
+ <h3 class="photo-title">SPORT X FLAMENGO - CAMPEONATO
+BRASILEIRO - ARENA PERNAMBUCO - 15-11-2025</h3>
+ <span class="photo-credit">Gilvan de
+Souza/Flamengo</span>
+ </div>
+ </div>
+ </div>
+ <div class="photo-sponsors">
+ <div class="sponsor-grid-row">
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ </div>
+
+
+<div class="sponsor-grid-row" style="grid-template-columns:
+repeat(4, 1fr);">
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ <div class="sponsor-box">
+ <img src="INSIRA_LOGO_AQUI.png" alt="Logo">
+ </div>
+ </div>
+ </div>
+ </section>
+ <div class="sponsors-bar">
+ <div class="container">
+ <img
+src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_Logo.png"
+class="sponsors-img" alt="Adidas">
+ <img
+src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Mercado_Livre_log
+o.png" class="sponsors-img" alt="Mercado Livre">
+ </div>
+ </div>
+ <footer class="main-footer">
+ <div class="container footer-grid">
+ <div class="footer-col">
+ <h4>Sedes</h4>
+ <p><strong>Gávea:</strong> Av. Borges de Medeiros, 997</p>
+ <p><strong>Ninho do Urubu:</strong> Estr. dos
+Bandeirantes, 25.997</p>
+ <div class="footer-social" style="margin-top:20px;">
+ <i class="fab fa-facebook-f"></i><i class="fab
+fa-twitter"></i><i class="fab fa-instagram"></i><i class="fab
+fa-youtube"></i>
+ </div>
+ </div>
+
+
+<div class="footer-col"><h4>Futebol</h4><ul><li><a
+href="#">Profissional</a></li><li><a href="#">Base</a></li><li><a
+href="#">Feminino</a></li><li><a href="#">Tabela</a></li></ul></div>
+ <div class="footer-col"><h4>Clube</h4><ul><li><a
+href="#">Institucional</a></li><li><a href="#">Conselhos</a></li><li><a
+href="#">Transparência</a></li></ul></div>
+ <div class="footer-col"><h4>Serviços</h4><ul><li><a
+href="#">Seja Sócio</a></li><li><a href="#">Ingressos</a></li><li><a
+href="#">Loja Oficial</a></li></ul></div>
+ </div>
+ <div class="container copyright"><p>&copy; 2025 Clube de Regatas
+do Flamengo. Todos os direitos reservados.</p></div>
+ </footer>
+</body>
+</html>
