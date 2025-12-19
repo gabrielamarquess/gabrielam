@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisio+ | Saúde e Bem-estar</title>
+    <style>
+        /* CSS PADRÃO E VARIÁVEIS */
+        :root {
+            --primary-color: #00bfa5;
+            --primary-dark: #008f7a;
+            --text-color: #333;
+            --bg-light: #f4f6f8;
+            --white: #ffffff;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+       
+        /* CONTAINER LARGO (90%) */
+        .container { max-width: 90%; margin: 0 auto; padding: 0 20px; }
+       
+        .btn-primary { background-color: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; display: inline-block; cursor: pointer;}
+        .btn-primary:hover { background-color: var(--primary-dark); }
+       
+        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 16px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .btn-outline:hover { background-color: var(--primary-color); color: white; }
+       
+        header { background-color: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding: 15px 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #2c3e50; }
+        .logo span { color: var(--primary-color); }
+        nav ul { display: flex; gap: 20px; align-items: center; }
+        nav a:hover { color: var(--primary-color); }
+       
+        /* --- SEÇÃO HERO MODIFICADA --- */
+        .hero {
+            /* Substituído o link do Unsplash pelo arquivo local image_1.png */
+            /* Mantido o gradiente para leitura do texto */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('image_1.png');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            transition: 0.5s;
+        }
+        .hero-text { margin: 0 auto; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+
+
+        /* SERVIÇOS (Visitante) */
+        .services { padding: 60px 20px; text-align: center; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--white); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--primary-color); margin-bottom: 10px; }
+       
+        /* RODAPÉ */
+        footer { background-color: #2c3e50; color: white; text-align: center; padding: 20px 0; margin-top: auto; }
+       
+        /* AREA DO USUÁRIO */
+        .user-area { display: flex; gap: 15px; align-items: center; font-weight: bold; color: #2c3e50; }
+        .btn-sair { color: #e74c3c; font-size: 0.9rem; cursor: pointer; border: 1px solid #e74c3c; padding: 5px 10px; border-radius: 5px;}
+        .btn-sair:hover { background: #e74c3c; color: white; }
+
+
+        /* --- PAINEL DE GESTÃO --- */
+        #painel-gestao { display: none; padding: 40px 20px; }
+       
+        /* GRID HORIZONTAL (Ponto da rubrica) */
+        .painel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 20px; }
+
+
+        .painel-card { background-color: var(--white); padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, border 0.3s; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; border-bottom: 4px solid transparent; height: 200px; }
+        .painel-card:hover { transform: translateY(-7px); border-bottom-color: var(--primary-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+       
+        /* ÍCONES GRANDES */
+        .painel-icon { font-size: 4rem; margin-bottom: 15px; color: var(--primary-color); }
+        .painel-title { font-weight: 600; color: #444; font-size: 1.1rem; }
+
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 900px) { .painel-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .painel-grid { grid-template-columns: 1fr; } .container { max-width: 100%; } .hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <div class="container header-content">
+            <a href="telainicial.html" class="logo">Fisio<span>+</span></a>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="telainicial.html">Início</a></li>
+                    <li id="menu-servicos"><a href="#">Serviços</a></li>
+                    <li id="menu-login"><a href="login.html" class="btn-outline">Entrar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="hero" id="hero-section">
+        <div class="container">
+            <div class="hero-text">
+                <h1 id="titulo-hero">Recupere seu movimento,<br> viva sem dor.</h1>
+                <p id="subtitulo-hero">Na Fisio+, conectamos você aos melhores fisioterapeutas.</p>
+                <div id="cta-container" style="margin-top: 20px;">
+                    <a href="login.html" class="btn-primary">Agendar Consulta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="services container" id="secao-marketing">
+        <h2>Nossas Especialidades</h2>
+        <div class="grid-cards">
+            <div class="card"><h3>Fisioterapia Motora</h3><p>Reabilitação muscular e articular.</p></div>
+            <div class="card"><h3>Pilates</h3><p>Fortalecimento e correção postural.</p></div>
+            <div class="card"><h3>Quiropraxia</h3><p>Alinhamento da coluna e alívio de dores.</p></div>
+        </div>
+    </section>
+
+
+    <section class="container" id="painel-gestao">
+        <h2>Menu de Acesso Rápido</h2>
+        <p>Selecione uma opção para gerenciar:</p>
+        <div class="painel-grid">
+            <a href="cadastro-cliente.html" class="painel-card"><div class="painel-icon">👥</div><div class="painel-title">Cadastrar Cliente</div></a>
+            <a href="cadastro-profissional.html" class="painel-card"><div class="painel-icon">👨‍⚕️</div><div class="painel-title">Cadastrar Profissional</div></a>
+            <a href="agendamentos.html" class="painel-card"><div class="painel-icon">📅</div><div class="painel-title">Agendamentos</div></a>
+            <a href="checkin.html" class="painel-card"><div class="painel-icon">✅</div><div class="painel-title">Check-in</div></a>
+            <a href="prontuarios.html" class="painel-card"><div class="painel-icon">📋</div><div class="painel-title">Avaliações e Prontuários</div></a>
+            <a href="financeiro.html" class="painel-card"><div class="painel-icon">💰</div><div class="painel-title">Controle Financeiro</div></a>
+            <a href="relatorios.html" class="painel-card"><div class="painel-icon">📊</div><div class="painel-title">Relatórios</div></a>
+            <a href="configuracoes.html" class="painel-card"><div class="painel-icon">⚙️</div><div class="painel-title">Configurações</div></a>
+        </div>
+    </section>
+
+
+    <footer><p>&copy; 2025 Fisio+. Todos os direitos reservados.</p></footer>
+
+
+    <script>
+        window.onload = function() {
+            var estaLogado = localStorage.getItem('esta_logado');
+            var dadosUsuario = localStorage.getItem('usuario_fisio');
+            if (estaLogado === 'sim' && dadosUsuario) {
+                var usuario = JSON.parse(dadosUsuario);
+                document.getElementById('menu-login').innerHTML = `<div class="user-area"><span>Olá, ${usuario.nome.split(' ')[0]}</span><span class="btn-sair" onclick="sairDaConta()">Sair</span></div>`;
+                document.getElementById('titulo-hero').innerText = "Painel Administrativo";
+                document.getElementById('subtitulo-hero').innerText = "Bem-vindo de volta ao sistema Fisio+";
+                document.getElementById('cta-container').style.display = 'none';
+                document.getElementById('hero-section').style.height = '200px';
+                document.getElementById('secao-marketing').style.display = 'none';
+                document.getElementById('painel-gestao').style.display = 'block';
+            }
+        };
+        function sairDaConta() { localStorage.removeItem('esta_logado'); window.location.reload(); }
+    </script>
+</body>
+</html>
