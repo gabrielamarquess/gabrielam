@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Profissional | Fisio+</title>
+    <title>Cadastro de Profissional | Fisio+</title>
     <style>
         :root { --primary-color: #00bfa5; --primary-dark: #008f7a; --text-color: #333; --bg-light: #eef2f5; --white: #ffffff; --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background-color: var(--bg-light); color: var(--text-color); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
         .auth-card { background: var(--white); padding: 40px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 500px; }
         .auth-header { text-align: center; margin-bottom: 30px; }
-        .logo-auth { font-size: 2rem; font-weight: bold; color: #2c3e50; text-decoration: none; }
+        .logo-auth { font-size: 2rem; font-weight: bold; color: #2c3e50; text-decoration: none; display: block; margin-bottom: 10px; }
         .logo-auth span { color: var(--primary-color); }
         .input-group { margin-bottom: 15px; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: 500; }
-        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; }
-        .btn-primary { background-color: var(--primary-color); color: white; padding: 12px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; width: 100%; transition: 0.3s; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: 500; color: #555; }
+        .input-group input, .input-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; font-size: 1rem; }
+        .input-group input:focus { border-color: var(--primary-color); }
+        .btn-primary { background-color: var(--primary-color); color: white; padding: 12px; border-radius: 5px; font-weight: bold; border: none; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
         .btn-primary:hover { background-color: var(--primary-dark); }
-        .back-link { display: block; text-align: center; margin-top: 15px; color: #777; text-decoration: none; font-size: 0.9rem; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #777; text-decoration: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -25,28 +26,35 @@
         <div class="auth-header">
             <a href="telainicial.html" class="logo-auth">Fisio<span>+</span></a>
             <h2>Cadastro de Profissional</h2>
+            <p>Registre um novo fisioterapeuta no sistema.</p>
         </div>
-        <form id="form-profissional">
+
+        <form>
             <div class="input-group">
                 <label>Nome do Profissional</label>
-                <input type="text" placeholder="Ex: Dr. João Silva" required>
+                <input type="text" placeholder="Ex: Dr. Ricardo Souza">
             </div>
             <div class="input-group">
-                <label>Registro Profissional (CREFITO)</label>
-                <input type="text" placeholder="000000-F" required>
+                <label>Número do CREFITO</label>
+                <input type="text" placeholder="000000-F">
             </div>
             <div class="input-group">
-                <label>Especialidade</label>
+                <label>Especialidade Principal</label>
                 <select>
-                    <option>Fisioterapia Motora</option>
-                    <option>Pilates</option>
-                    <option>Quiropraxia</option>
-                    <option>Fisioterapia Esportiva</option>
+                    <option value="">Selecione uma especialidade</option>
+                    <option value="motora">Fisioterapia Motora</option>
+                    <option value="pilates">Pilates</option>
+                    <option value="quiro">Quiropraxia</option>
+                    <option value="esportiva">Fisioterapia Esportiva</option>
                 </select>
             </div>
-            <button type="submit" class="btn-primary">Salvar Profissional</button>
+            <div class="input-group">
+                <label>E-mail Profissional</label>
+                <input type="email" placeholder="nome@fisio.com">
+            </div>
+            <button type="button" class="btn-primary" onclick="alert('Profissional cadastrado!')">Cadastrar Fisioterapeuta</button>
         </form>
-        <a href="telainicial.html" class="back-link">Voltar ao Painel</a>
+        <a href="telainicial.html" class="back-link">← Voltar ao Painel</a>
     </div>
 </body>
 </html>
