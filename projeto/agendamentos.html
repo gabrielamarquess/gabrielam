@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos | Fisio+</title>
+    <style>
+        :root { --primary-color: #00bfa5; --primary-dark: #008f7a; --bg-light: #f4f6f8; --white: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-light); padding: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .card { background: var(--white); padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h2 { color: #2c3e50; margin-bottom: 20px; border-left: 5px solid var(--primary-color); padding-left: 10px; }
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .input-group input, .input-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .full-width { grid-column: span 2; }
+        .btn-primary { background: var(--primary-color); color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-primary:hover { background: var(--primary-dark); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Novo Agendamento</h2>
+            <form class="grid-form">
+                <div class="input-group full-width">
+                    <label>Paciente</label>
+                    <input type="text" placeholder="Busque o nome do paciente...">
+                </div>
+                <div class="input-group">
+                    <label>Profissional</label>
+                    <select>
+                        <option>Dra. Ana Paula (Pilates)</option>
+                        <option>Dr. Ricardo (Quiropraxia)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Data</label>
+                    <input type="date">
+                </div>
+                <div class="input-group">
+                    <label>Horário</label>
+                    <input type="time">
+                </div>
+                <div class="input-group">
+                    <label>Tipo de Sessão</label>
+                    <select>
+                        <option>Avaliação</option>
+                        <option>Retorno</option>
+                        <option>Sessão Avulsa</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <button type="button" class="btn-primary" onclick="alert('Agendamento realizado!')">Confirmar Horário</button>
+                    <center><a href="telainicial.html" style="display:block; margin-top:15px; color:#666; text-decoration:none;">Cancelar</a></center>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

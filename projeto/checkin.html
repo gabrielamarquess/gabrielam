@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in | Fisio+</title>
+    <style>
+        :root { --primary-color: #00bfa5; --bg-light: #f4f6f8; --white: #ffffff; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-light); padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; background: #f8f9fa; padding: 12px; color: #555; }
+        td { padding: 12px; border-bottom: 1px solid #eee; }
+        .status-badge { padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; background: #ffeaa7; color: #d6a317; }
+        .btn-checkin { background: var(--primary-color); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+        .btn-checkin:hover { background: #008f7a; }
+        .search-box { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Check-in de Pacientes</h2>
+            <p>Pacientes agendados para hoje:</p>
+            <br>
+            <input type="text" class="search-box" placeholder="Filtrar por nome do paciente...">
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Paciente</th>
+                        <th>Profissional</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00</td>
+                        <td>Carlos Alberto</td>
+                        <td>Dra. Ana Paula</td>
+                        <td><span class="status-badge">Aguardando</span></td>
+                        <td><button class="btn-checkin" onclick="confirmar(this)">Confirmar Presença</button></td>
+                    </tr>
+                    <tr>
+                        <td>10:30</td>
+                        <td>Maria Souza</td>
+                        <td>Dr. Ricardo</td>
+                        <td><span class="status-badge">Aguardando</span></td>
+                        <td><button class="btn-checkin" onclick="confirmar(this)">Confirmar Presença</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <a href="telainicial.html" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">← Voltar ao início</a>
+        </div>
+    </div>
+
+    <script>
+        function confirmar(btn) {
+            btn.innerHTML = "✓ Confirmado";
+            btn.style.background = "#2ecc71";
+            btn.disabled = true;
+            let badge = btn.parentElement.parentElement.querySelector('.status-badge');
+            badge.innerText = "Presente";
+            badge.style.background = "#d4edda";
+            badge.style.color = "#155724";
+        }
+    </script>
+</body>
+</html>
